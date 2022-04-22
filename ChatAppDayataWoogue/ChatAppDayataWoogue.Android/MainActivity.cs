@@ -6,6 +6,8 @@ using Android.Runtime;
 using Android.OS;
 using ChatAppDayataWoogue;
 
+using Xamarin.Forms;
+
 namespace ChatAppDayataWoogue.Droid
 {
     [Activity(Label = "ChatAppDayataWoogue", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
@@ -13,6 +15,16 @@ namespace ChatAppDayataWoogue.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            var density = Resources.DisplayMetrics.Density;
+            App.screenWidth = Resources.DisplayMetrics.WidthPixels;
+            App.screenHeight = Resources.DisplayMetrics.HeightPixels;
+
+            if (Device.Idiom == TargetIdiom.Phone)
+                App.screenHeight = (16 * App.screenWidth) / 9;
+
+            if(Device.Idiom == TargetIdiom.Tablet)
+                App.screenWidth = (9 * App.screenHeight) / 16;
+
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

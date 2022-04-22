@@ -92,5 +92,29 @@
       <Name>ChatAppDayataWoogue</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="ChatAppResources\drawable-hdpi\FacebookSignIn.png" />
+    <Content Include="ChatAppResources\drawable-hdpi\FacebookSignUp.png" />
+    <Content Include="ChatAppResources\drawable-hdpi\Logo.png" />
+    <Content Include="ChatAppResources\drawable-mdpi\ChatIcon.png" />
+    <Content Include="ChatAppResources\drawable-mdpi\FacebookSignUp.png" />
+    <Content Include="ChatAppResources\drawable-mdpi\GoogleSignIn.png" />
+    <Content Include="ChatAppResources\drawable-mdpi\Logo.png" />
+    <Content Include="ChatAppResources\drawable-xhdpi\Logo.png" />
+    <Content Include="ChatAppResources\drawable-xxhdpi\GoogleSignIn.png" />
+    <Content Include="ChatAppResources\drawable-xxhdpi\Logo.png" />
+    <Content Include="ChatAppResources\drawable-xxxhdpi\FacebookSignIn.png" />
+    <Content Include="ChatAppResources\drawable-xxxhdpi\FacebookSignUp.png" />
+    <Content Include="ChatAppResources\drawable-xxxhdpi\GoogleSignIn.png" />
+    <Content Include="ChatAppResources\drawable-xxxhdpi\GoogleSignUp.png" />
+    <Content Include="ChatAppResources\drawable-xxxhdpi\Logo.png" />
+    <Content Include="ChatAppResources\mipmap-mdpi\ic_launcher_foreground.png" />
+    <Content Include="ChatAppResources\mipmap-xhdpi\ic_launcher.png" />
+    <Content Include="ChatAppResources\mipmap-xhdpi\ic_launcher_foreground.png" />
+    <Content Include="ChatAppResources\mipmap-xhdpi\ic_launcher_round.png" />
+    <Content Include="ChatAppResources\mipmap-xxhdpi\ic_launcher.png" />
+    <Content Include="ChatAppResources\mipmap-xxxhdpi\ic_launcher.png" />
+    <Content Include="ChatAppResources\mipmap-xxxhdpi\ic_launcher_round.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
