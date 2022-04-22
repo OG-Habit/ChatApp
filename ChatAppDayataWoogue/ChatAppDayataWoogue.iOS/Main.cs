@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace ChatApp_Dayata_Woogue.iOS
+namespace ChatAppDayataWoogue.iOS
 {
     public class Application
     {

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChatAppDayataWoogue
 {
-    internal class Constants
+    internal static class Constants
     {
         
     }
