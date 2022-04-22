@@ -10,14 +10,14 @@ using Xamarin.Forms;
 
 namespace ChatAppDayataWoogue.Droid
 {
-    [Activity(Label = "ChatAppDayataWoogue", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
+    [Activity(Label = "ChatAppDayataWoogue", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             var density = Resources.DisplayMetrics.Density;
-            App.screenWidth = Resources.DisplayMetrics.WidthPixels;
-            App.screenHeight = Resources.DisplayMetrics.HeightPixels;
+            App.screenWidth = Resources.DisplayMetrics.WidthPixels / density;
+            App.screenHeight = Resources.DisplayMetrics.HeightPixels / density;
 
             if (Device.Idiom == TargetIdiom.Phone)
                 App.screenHeight = (16 * App.screenWidth) / 9;
