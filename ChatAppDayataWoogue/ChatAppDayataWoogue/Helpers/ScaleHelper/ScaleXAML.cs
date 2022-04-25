@@ -73,6 +73,13 @@ namespace ChatAppDayataWoogue
                 {
                     return new Thickness(l * (App.screenWidth / 320.0), t * (App.screenHeight / 568.0), r * (App.screenWidth / 320.0), b * (App.screenHeight / 568.0));
                 }   
+            } else if (thickness.Length == 2)
+            {
+                if(double.TryParse(thickness[0], NumberStyles.Number, CultureInfo.InvariantCulture, out l) &&
+                    double.TryParse(thickness[1], NumberStyles.Number, CultureInfo.InvariantCulture, out t))
+                {
+                    return new Thickness(l * (App.screenWidth / 320.0), t * (App.screenHeight / 568.0));
+                }
             }
             throw new InvalidOperationException("Cannot convert thickness");
         }

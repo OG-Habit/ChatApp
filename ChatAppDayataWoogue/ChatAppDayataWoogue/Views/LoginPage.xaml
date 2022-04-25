@@ -3,10 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:ChatAppDayataWoogue.CustomRenderers"
              mc:Ignorable="d"
              x:Class="ChatAppDayataWoogue.Views.LoginPage"
              Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="Sigin">Sign in</x:String>
+            <Color x:Key="Signin">#90EE90</Color>
+            <Color x:Key="Gray">#D3D3D3</Color>
+
+            <Style TargetType="local:CustomEntry" x:Key="StyleEntry">
+                <Setter Property="ReturnType" Value="Next"/>
+                <Setter Property="BorderRadius" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=30'}"/>
+                <Setter Property="BorderWidth" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=10'}"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <!--<Setter Property="PaddingLeft" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=10'}"/>
+                <Setter Property="PaddingRight" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=10'}"/>
+                <Setter Property="PaddingTop" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=0'}"/>
+                <Setter Property="PaddingBot" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=0'}"/>-->
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <Image Source="Logo"/>
+        <StackLayout>
+            <Image Source="Logo"/>
+            <StackLayout Padding="{Binding Converter={StaticResource scale}, ConverterParameter='7.5, 7.5'}">
+                <local:CustomEntry Placeholder="Email" 
+                                   Keyboard="Email"
+                                   Style="{StaticResource StyleEntry}"/>
+                <local:CustomEntry Placeholder="Passsword"
+                                   IsPassword="True"
+                                   Style="{StaticResource StyleEntry}"/>
+                <Label Text="Forgot Password"/>
+                <Button Text="{StaticResource Sigin}" 
+                    BackgroundColor="{StaticResource Signin}"/>
+                <Button Text="Create an account" 
+                    BackgroundColor="{StaticResource Gray}"/>
+                <Label Text="or"/>
+                <FlexLayout >
+                    <Image Source="GoogleSignIn"/>
+                    <Image Source="FacebookSignIn"/>
+                </FlexLayout>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
