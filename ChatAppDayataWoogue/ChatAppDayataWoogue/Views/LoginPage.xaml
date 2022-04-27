@@ -9,41 +9,76 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <x:String x:Key="Sigin">Sign in</x:String>
-            <Color x:Key="Signin">#90EE90</Color>
-            <Color x:Key="Gray">#D3D3D3</Color>
-
+            <x:String x:Key="PaddingVertical">height=35</x:String>
             <Style TargetType="local:CustomEntry" x:Key="StyleEntry">
                 <Setter Property="ReturnType" Value="Next"/>
-                <Setter Property="BorderRadius" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=30'}"/>
+                <Setter Property="BorderRadius" Value="20"/>
                 <Setter Property="BorderWidth" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=10'}"/>
                 <Setter Property="FontSize" Value="Small"/>
-                <!--<Setter Property="PaddingLeft" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=10'}"/>
-                <Setter Property="PaddingRight" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=10'}"/>
-                <Setter Property="PaddingTop" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=0'}"/>
-                <Setter Property="PaddingBot" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=0'}"/>-->
+                <Setter Property="PaddingTop" Value="{Binding Converter={StaticResource scale}, ConverterParameter={StaticResource PaddingVertical}}"/>
+                <Setter Property="PaddingBot" Value="{Binding Converter={StaticResource scale}, ConverterParameter={StaticResource PaddingVertical}}"/>
+            </Style>
+            <Style TargetType="Image" x:Key="ImgSigin">
+                <Setter Property="WidthRequest" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=260'}"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="TextTransform" Value="None"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+            <Style TargetType="BoxView">
+                <Setter Property="Color" Value="Black"/>
+                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource scale}, ConverterParameter='height=1'}"/>
+                <Setter Property="WidthRequest" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=240'}"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Image Source="Logo"/>
-            <StackLayout Padding="{Binding Converter={StaticResource scale}, ConverterParameter='7.5, 7.5'}">
+            <Frame BackgroundColor="{StaticResource ImgBgColor}"
+                   Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=0,19'}"  HasShadow="False">
+                <Frame CornerRadius="10" HorizontalOptions="Center"
+                       Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=9,9'}">
+                    <Image Source="Logo" HorizontalOptions="Center"
+                        HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=185'}"/> 
+                </Frame>
+            </Frame>
+            <StackLayout Spacing="{Binding Converter={StaticResource scale}, ConverterParameter='height=12.5'}" 
+                         Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=7.5,2'}" >
                 <local:CustomEntry Placeholder="Email" 
                                    Keyboard="Email"
                                    Style="{StaticResource StyleEntry}"/>
-                <local:CustomEntry Placeholder="Passsword"
-                                   IsPassword="True"
+                <AbsoluteLayout>
+                    <local:CustomEntry Placeholder="Passsword"
+                                   IsPassword="True" 
+                                        AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional"
                                    Style="{StaticResource StyleEntry}"/>
-                <Label Text="Forgot Password"/>
-                <Button Text="{StaticResource Sigin}" 
+                    <Button Text="Show"
+                            AbsoluteLayout.LayoutBounds="0.95,0.5"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                        FontSize="{Binding Converter={StaticResource scale}, ConverterParameter='fontSize=10'}"
+                        WidthRequest="{Binding Converter={StaticResource scale}, ConverterParameter='width=90'}" 
+                        HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=29'}"
+                        Clicked="popup" />
+                </AbsoluteLayout>
+                <Label Text="Forgot Password" 
+                       HorizontalOptions="End"/>
+                <Button Text="Sign in"  
                     BackgroundColor="{StaticResource Signin}"/>
                 <Button Text="Create an account" 
                     BackgroundColor="{StaticResource Gray}"/>
-                <Label Text="or"/>
-                <FlexLayout >
-                    <Image Source="GoogleSignIn"/>
-                    <Image Source="FacebookSignIn"/>
+                <FlexLayout AlignItems="Center" JustifyContent="SpaceBetween">
+                    <BoxView/>
+                    <Label Text="or"/>
+                    <BoxView/>
+                </FlexLayout>
+                <FlexLayout JustifyContent="SpaceBetween">
+                    <Frame CornerRadius="10" BorderColor="{StaticResource Gray}" 
+                           Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=2.8,2.8'}" HasShadow="False" >
+                        <Image Style="{StaticResource ImgSigin}" Source="GoogleSignIn"/>
+                    </Frame>
+                    <Frame CornerRadius="10" HasShadow="False" Padding="0">
+                        <Image Style="{StaticResource ImgSigin}" Source="FacebookSignIn" />
+                    </Frame>
                 </FlexLayout>
             </StackLayout>
         </StackLayout>

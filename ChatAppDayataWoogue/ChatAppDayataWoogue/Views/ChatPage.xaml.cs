@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ChatAppDayataWoogue.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignupPage : ContentPage
+    public partial class ChatPage : ContentPage
     {
-        public SignupPage()
+        public ChatPage()
         {
             InitializeComponent();
         }

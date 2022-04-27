@@ -1,5 +1,4 @@
-﻿using ChatAppDayataWoogue.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +14,11 @@ namespace ChatAppDayataWoogue.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+        }
+
+        async void popup(object sender, EventArgs e)
+        {
+            await DisplayAlert("Email", "You gay", "Ok");
         }
     }
 }

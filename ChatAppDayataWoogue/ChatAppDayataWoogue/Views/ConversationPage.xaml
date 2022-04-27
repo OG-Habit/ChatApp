@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ChatAppDayataWoogue.CustomRenderers" 
+             xmlns:viewModel="clr-namespace:ChatAppDayataWoogue.ViewModels;assembly=ChatAppDayataWoogue"
+             x:Class="ChatAppDayataWoogue.Views.ConversationPage">
+    <ContentPage.BindingContext>
+        <viewModel:ConversationPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid ColumnDefinitions="5*, *" RowDefinitions="1*, 9*, 1.3*"
+              RowSpacing="0" ColumnSpacing="0">
+            <Label Grid.Row="0" Grid.Column="0"
+                   Text="John Doe" FontSize="Title" FontAttributes="Bold" BackgroundColor="Black"/>
+            <Button Grid.Row="0" Grid.Column="1" VerticalOptions="Start"  Margin="0"
+                    Text="X" />
+            <CollectionView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                      x:Name="MessagesView" ItemsSource="{Binding Messages}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <local:CustomLabel Text="{Binding Text}" FontSize="Medium" 
+                                   HorizontalTextAlignment="{Binding Alignment}"
+                                   HorizontalOptions="{Binding HorizontalOptions}" 
+                                   LineBreakMode="WordWrap" 
+                                   Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=10,10'}"
+                                   MaxWidth="{Binding Converter={StaticResource scale}, ConverterParameter='width=1000'}"
+                                   BackgroundColor="{Binding BgColor}"
+                                   Margin="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=0,0,0,10'}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Gray}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <local:CustomEditor Grid.Column="0" Placeholder="Write your message here..." MaxLength="240" AutoSize="Disabled"
+                                    BackgroundColor="Green"  
+                       HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=60'}"/>
+                <Button Grid.Column="1" Text="Send"
+                        WidthRequest="{Binding Converter={StaticResource scale}, ConverterParameter='width=100'}"/>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

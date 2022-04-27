@@ -24,8 +24,9 @@ namespace ChatAppDayataWoogue.Droid
                 var background = new GradientDrawable();
                 background.SetStroke(view.BorderWidth, Color.Black.ToAndroid());
                 background.SetCornerRadius(view.BorderRadius);
-                background.SetPadding(10, 0, 10, 0);
+
                 Control.SetBackground(background);
+                Control.SetPadding(view.PaddingLeft, view.PaddingTop, view.PaddingRight, view.PaddingBot);
             }
         }
     }

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChatAppDayataWoogue.Views.ProfilePage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:String x:Key="ImgSize">height=150</x:String>
+            <Style TargetType="Frame">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="IsClippedToBounds" Value="True"/>
+                <Setter Property="CornerRadius" Value="190"/>
+                <Setter Property="Padding" Value="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=10,10'}"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Margin="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=15,20'}"
+                     Spacing="{Binding Converter={StaticResource scale}, ConverterParameter='height=10'}">
+            <Frame BackgroundColor="Red">
+                <Frame BackgroundColor="Black">
+                    <Frame Padding="0">
+                        <Image WidthRequest="{Binding Converter={StaticResource scale}, ConverterParameter={StaticResource ImgSize}}"
+                               HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter={StaticResource ImgSize}}" 
+                               Source="Logo" Aspect="AspectFill" />
+                    </Frame>
+                </Frame>
+            </Frame>
+            <Label Text="John Adam B. Doe" FontSize="Title"/>
+            <Label Text="10102020@usc.edu.ph" FontSize="Medium"/>
+            <Button Text="Sign out" BackgroundColor="{StaticResource Gray}" TextTransform="None" CornerRadius="10"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

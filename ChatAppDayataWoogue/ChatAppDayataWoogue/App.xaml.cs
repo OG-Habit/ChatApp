@@ -15,8 +15,8 @@ namespace ChatAppDayataWoogue
         public App()
         {
             InitializeComponent();
-            DependencyService.Register<MockDataStore>();
-            MainPage = new LoginPage();
+            //DependencyService.Register<MockDataStore>();
+            MainPage = new ConversationPage();
         }
 
         protected override void OnStart()
