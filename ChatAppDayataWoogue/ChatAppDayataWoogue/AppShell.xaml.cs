@@ -10,6 +10,7 @@ namespace ChatAppDayataWoogue
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(SignupPage), typeof(SignupPage));
             //Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             //Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }

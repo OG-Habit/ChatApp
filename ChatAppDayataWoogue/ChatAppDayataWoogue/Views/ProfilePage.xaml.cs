@@ -19,10 +19,10 @@ namespace ChatAppDayataWoogue.Views
             LabelEmail.Text = (string)App.Current.Properties[KEY_EMAIL];
         }
 
-        private void Signout(object sender, EventArgs e)
+        private async void Signout(object sender, EventArgs e)
         {
             App.Current.Properties.Clear();
-            App.Current.MainPage = new NavigationPage(new LoginPage());
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }

@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:ChatAppDayataWoogue.CustomRenderers"
              mc:Ignorable="d"
              x:Class="ChatAppDayataWoogue.Views.LoginPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

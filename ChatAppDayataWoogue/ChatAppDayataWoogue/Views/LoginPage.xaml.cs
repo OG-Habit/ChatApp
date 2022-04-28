@@ -26,16 +26,23 @@ namespace ChatAppDayataWoogue.Views
 
         async void GoToSignup(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SignupPage());
+            await Shell.Current.GoToAsync($"{nameof(SignupPage)}");
         }
 
-        private void Login(object sender, EventArgs e)
+        private async void Login(object sender, EventArgs e)
         {
             if(App.Current.Properties[KEY_EMAIL].ToString().Equals(EntryEmail.Text) &&
                 App.Current.Properties[KEY_PASSWORD].ToString().Equals(EntryPassword.Text))
             {
-                App.Current.MainPage = new AppShell();
-            }
+                await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
+            } 
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            EntryEmail.Text = EntryPassword.Text = "";
+            EntryEmail.Focus();
         }
     }
 }

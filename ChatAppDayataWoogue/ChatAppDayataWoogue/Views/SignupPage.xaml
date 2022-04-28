@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatAppDayataWoogue.CustomRenderers"
              x:Class="ChatAppDayataWoogue.Views.SignupPage"
-             NavigationPage.HasNavigationBar="False">
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <x:String x:Key="PaddingVertical">height=35</x:String>

@@ -29,7 +29,8 @@ namespace ChatAppDayataWoogue.Views
 
         async void GoToLoginPage(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginPage());
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}"); 
+
         }
         
         private async void SignUp(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace ChatAppDayataWoogue.Views
                 App.Current.Properties[KEY_USERNAME] = EntryUsername.Text;
                 await Application.Current.SavePropertiesAsync();
                 await DisplayAlert("Success", "You have successfully create an account", "Continue");
-                App.Current.MainPage = new NavigationPage(new LoginPage());
+                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
             }
         }
 

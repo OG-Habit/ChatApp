@@ -3,6 +3,7 @@ using ChatAppDayataWoogue.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using static ChatAppDayataWoogue.Constants;
 
 namespace ChatAppDayataWoogue
 {
@@ -16,7 +17,7 @@ namespace ChatAppDayataWoogue
         {
             InitializeComponent();
             //DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new ConversationPage();
         }
 
         protected override void OnStart()
