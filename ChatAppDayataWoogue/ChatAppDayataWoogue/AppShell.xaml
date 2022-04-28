@@ -31,16 +31,16 @@
 
     <TabBar>
         <ShellContent Title="Chat" Icon="ChatIcon" Route="ChatPage" ContentTemplate="{DataTemplate local:ChatPage}" />
-        <ShellContent Title="Profile" Icon="ProfileIcon" ContentTemplate="{DataTemplate local:ProfilePage}" />
+        <ShellContent Title="Profile" Icon="ProfileIcon" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />
     </TabBar>
 
     <!--
         If you would like to navigate to this content you can do so by calling
         await Shell.Current.GoToAsync("//LoginPage");
     -->
-    <TabBar>
+    <!--<TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </TabBar>
+    </TabBar>-->
 
 
 </Shell>

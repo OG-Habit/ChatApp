@@ -31,9 +31,9 @@
                     </Frame>
                 </Frame>
             </Frame>
-            <Label Text="John Adam B. Doe" FontSize="Title"/>
-            <Label Text="10102020@usc.edu.ph" FontSize="Medium"/>
-            <Button Text="Sign out" BackgroundColor="{StaticResource Gray}" TextTransform="None" CornerRadius="10"/>
+            <Label x:Name="LabelUsername" FontSize="Title"/>
+            <Label x:Name="LabelEmail" FontSize="Medium"/>
+            <Button Clicked="Signout" Text="Sign out" BackgroundColor="{StaticResource Gray}" TextTransform="None" CornerRadius="10"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

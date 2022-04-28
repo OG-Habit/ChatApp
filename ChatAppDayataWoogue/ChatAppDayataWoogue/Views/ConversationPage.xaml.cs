@@ -12,5 +12,10 @@ namespace ChatAppDayataWoogue.Views
             InitializeComponent();
             BindingContext = new ConversationPageViewModel();
         }
+
+        private void ClearTextInput(object sender, System.EventArgs e)
+        {
+            EditorTextInput.Text = "";
+        }
     }
 }
