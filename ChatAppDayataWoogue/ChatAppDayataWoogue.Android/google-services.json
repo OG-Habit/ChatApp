@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "317783805966",
+    "project_id": "chatapp-dayatawoogue",
+    "storage_bucket": "chatapp-dayatawoogue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317783805966:android:791ff2ad1096f543b22c5f",
+        "android_client_info": {
+          "package_name": "com.companyname.ChatAppDayataWoogue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317783805966-n4c4hpmed4nruj7svnq3k1v0ulf7l64p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAStSL8ggbsOkAa38X23cY9BzP9-QWwL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317783805966-n4c4hpmed4nruj7svnq3k1v0ulf7l64p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

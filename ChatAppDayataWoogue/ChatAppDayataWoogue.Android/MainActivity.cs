@@ -7,6 +7,7 @@ using Android.OS;
 using ChatAppDayataWoogue;
 
 using Xamarin.Forms;
+using Firebase;
 
 namespace ChatAppDayataWoogue.Droid
 {
@@ -16,6 +17,11 @@ namespace ChatAppDayataWoogue.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             var density = Resources.DisplayMetrics.Density;
+            TabLayoutResource  = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
+
+            FirebaseApp.InitializeApp(this);
+
             App.screenWidth = Resources.DisplayMetrics.WidthPixels / density;
             App.screenHeight = Resources.DisplayMetrics.HeightPixels / density;
 
