@@ -24,13 +24,13 @@ namespace ChatAppDayataWoogue
                 return dataClass;
             }
         }
-        bool _IsSignedIn { get; set; }
+        bool isSignedInValue { get; set; }
         public bool IsSignedIn
         {
             set
             {
-                _IsSignedIn = value;
-                App.Current.Properties[KEY_ISSIGNEDIN] = _IsSignedIn;
+                isSignedInValue = value;
+                App.Current.Properties[KEY_ISSIGNEDIN] = isSignedInValue;
                 App.Current.SavePropertiesAsync();
                 OnPropertyChanged();
             }
@@ -38,28 +38,28 @@ namespace ChatAppDayataWoogue
             {
                 if(App.Current.Properties.ContainsKey(KEY_ISSIGNEDIN)) 
                 {
-                    _IsSignedIn = Convert.ToBoolean(App.Current.Properties[KEY_ISSIGNEDIN]);
+                    isSignedInValue = Convert.ToBoolean(App.Current.Properties[KEY_ISSIGNEDIN]);
                 }
-                return _IsSignedIn;
+                return isSignedInValue;
             }
         }
-        UserModel _LoggedInUser { get; set; }
+        UserModel loggedInUserValue { get; set; }
         public UserModel LoggedInUser
         {
             set
             {
-                _LoggedInUser = value;
-                App.Current.Properties[KEY_LOGGEDIN] = JsonConvert.SerializeObject(_LoggedInUser);
+                loggedInUserValue = value;
+                App.Current.Properties[KEY_LOGGEDIN] = JsonConvert.SerializeObject(loggedInUserValue);
                 App.Current.SavePropertiesAsync();
                 OnPropertyChanged();
             }
             get
             {
-                if(_LoggedInUser == null && App.Current.Properties.ContainsKey(KEY_LOGGEDIN))
+                if(loggedInUserValue == null && App.Current.Properties.ContainsKey(KEY_LOGGEDIN))
                 {
-                    _LoggedInUser = JsonConvert.DeserializeObject<UserModel>(App.Current.Properties[KEY_LOGGEDIN].ToString());
+                    loggedInUserValue = JsonConvert.DeserializeObject<UserModel>(App.Current.Properties[KEY_LOGGEDIN].ToString());
                 }
-                return _LoggedInUser;
+                return loggedInUserValue;
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;
