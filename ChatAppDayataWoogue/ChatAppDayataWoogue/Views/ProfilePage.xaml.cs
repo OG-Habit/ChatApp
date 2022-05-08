@@ -21,8 +21,17 @@ namespace ChatAppDayataWoogue.Views
 
         private async void Signout(object sender, EventArgs e)
         {
-            App.Current.Properties.Clear();
-            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            FirebaseAuthResponseModel res = new FirebaseAuthResponseModel();
+            res = DependencyService.Get<IFirebaseAuthService>().SignOut();
+
+            if(res.Status == true)
+            {
+                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            }
+            else
+            {
+                await DisplayAlert("Error", res.Response, "Okay");
+            }
         }
     }
 }
