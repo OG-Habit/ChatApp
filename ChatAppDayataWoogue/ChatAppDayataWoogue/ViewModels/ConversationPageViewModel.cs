@@ -11,58 +11,43 @@ using Xamarin.Forms;
 
 namespace ChatAppDayataWoogue.ViewModels
 {
-    public class ConversationPageViewModel : INotifyPropertyChanged
+    public class ConversationPageViewModel : BaseViewModel
     {
-        public string MessageText { get; set; }
-        public ICommand AddMessageCommand => new Command(AddMessage);
-        private ObservableCollection<Message> _Messages;
-        public ObservableCollection<Message> Messages
-        {
-            get => _Messages;
-            set { _Messages = value; OnPropertyChanged(); }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ICommand AddMessageCommand { get; }
         public ConversationPageViewModel()
         {
+            Messages = new ObservableCollection<Message>();
+
+            AddMessageCommand = new Command(AddMessage);
+
             PopulateData();
         }
 
         private void PopulateData()
         {
-            Messages = new ObservableCollection<Message>
-            {
-                new Message { Text = "Text 2 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER},
-                new Message { Text = "Text 3 asdffffffffffffffffffffffffffffffffff asdf sadf asdf asd fasd fsd fasdf asdf asdf as fsad fasd fs fas  sadf sd", Alignment = HORIZONTAL_TEXTALIGNMENT_END, HorizontalOptions=HORIZONTAL_END, BgColor=BGCOLOR_PRIMARY_USER }
-                //new Message { Text = "Text 4", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER },
-                //new Message { Text = "Text 2 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER},
-                //new Message { Text = "Text 3 asdffffffffffffffffffffffffffffffffff asdf sadf asdf asd fasd fsd fasdf asdf asdf as fsad fasd fs fas  sadf sd", Alignment = HORIZONTAL_TEXTALIGNMENT_END, HorizontalOptions=HORIZONTAL_END, BgColor=BGCOLOR_PRIMARY_USER },
-                //new Message { Text = "Text 4", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER },
-                //new Message { Text = "Text 2 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER},
-                //new Message { Text = "Text 3 asdffffffffffffffffffffffffffffffffff asdf sadf asdf asd fasd fsd fasdf asdf asdf as fsad fasd fs fas  sadf sd", Alignment = HORIZONTAL_TEXTALIGNMENT_END, HorizontalOptions=HORIZONTAL_END, BgColor=BGCOLOR_PRIMARY_USER },
-                //new Message { Text = "Text 4", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER },
-                //new Message { Text = "Text 2 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER},
-                //new Message { Text = "Text 3 asdffffffffffffffffffffffffffffffffff asdf sadf asdf asd fasd fsd fasdf asdf asdf as fsad fasd fs fas  sadf sd", Alignment = HORIZONTAL_TEXTALIGNMENT_END, HorizontalOptions=HORIZONTAL_END, BgColor=BGCOLOR_PRIMARY_USER },
-                //new Message { Text = "Text 2 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER},
-                //new Message { Text = "Text 3 asdffffffffffffffffffffffffffffffffff asdf sadf asdf asd fasd fsd fasdf asdf asdf as fsad fasd fs fas  sadf sd", Alignment = HORIZONTAL_TEXTALIGNMENT_END, HorizontalOptions=HORIZONTAL_END, BgColor=BGCOLOR_PRIMARY_USER },
-                //new Message { Text = "Text 4", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER },
-                //new Message { Text = "Text 2 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Alignment = HORIZONTAL_TEXTALIGNMENT_START, HorizontalOptions=HORIZONTAL_START, BgColor=BGCOLOR_SECONDARY_USER},
-                //new Message { Text = "Text 3 asdffffffffffffffffffffffffffffffffff asdf sadf asdf asd fasd fsd fasdf asdf asdf as fsad fasd fs fas  sadf sd", Alignment = HORIZONTAL_TEXTALIGNMENT_END, HorizontalOptions=HORIZONTAL_END, BgColor=BGCOLOR_PRIMARY_USER },
-            };
-        }
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Messages.Add(new Message { Text = "Text 1 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Side = "left" });
+            Messages.Add(new Message { Text = "Text 2 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Side = "left" });
+            Messages.Add(new Message { Text = "Text 3 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Side = "right" });
+            Messages.Add(new Message { Text = "Text 4 adslfadlfsdlfkasldfkmasdfkmsalfmsadlfkmsadpfmpsdafmpdsmfp     asdpfmsadf", Side = "left" });
         }
 
         private void AddMessage()
         {
             Messages.Add(new Message { 
                 Text = MessageText, 
-                Alignment = HORIZONTAL_TEXTALIGNMENT_END, 
-                HorizontalOptions=HORIZONTAL_END,
-                BgColor=BGCOLOR_PRIMARY_USER
+                Side = "right"
             });
+            MessageText = "";
         }
+
+        #region Getters Setters
+        private ObservableCollection<Message> _messages;
+        public ObservableCollection<Message> Messages
+        {
+            get => _messages;
+            set => SetProperty(ref _messages, value);
+        }
+        public string MessageText { get; set; }
+        #endregion
     }
 }

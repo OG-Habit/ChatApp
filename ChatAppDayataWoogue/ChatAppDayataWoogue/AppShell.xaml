@@ -29,7 +29,13 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    <TabBar>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:ConversationPage}" />
+    </TabBar>
+
+    <TabBar>
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+    </TabBar>
 
     <TabBar>
         <ShellContent Title="Chat" Icon="ChatIcon" Route="ChatPage" ContentTemplate="{DataTemplate local:ChatPage}" />
