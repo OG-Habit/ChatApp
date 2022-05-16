@@ -12,11 +12,12 @@ namespace ChatAppDayataWoogue.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        DataClass dataClass = DataClass.GetInstance;
         public ProfilePage()
         {
             InitializeComponent();
-            LabelUsername.Text = App.Current.Properties[KEY_USERNAME].ToString();
-            LabelEmail.Text = (string)App.Current.Properties[KEY_EMAIL];
+            LabelUsername.Text = dataClass.LoggedInUser.Name;
+            LabelEmail.Text = dataClass.LoggedInUser.Email;
         }
 
         private async void Signout(object sender, EventArgs e)

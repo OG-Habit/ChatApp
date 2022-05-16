@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatAppDayataWoogue.CustomRenderers"
+             xmlns:cv="clr-namespace:ChatAppDayataWoogue.CustomViews"
              x:Class="ChatAppDayataWoogue.Views.SignupPage"
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False">
@@ -80,6 +81,11 @@
                     </Frame>
                 </FlexLayout>
             </StackLayout>
+            <cv:Loading
+                x:Name="Loading"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                IsVisible="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

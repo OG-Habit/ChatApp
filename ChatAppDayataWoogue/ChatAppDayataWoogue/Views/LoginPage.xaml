@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:ChatAppDayataWoogue.CustomRenderers"
+             xmlns:cv="clr-namespace:ChatAppDayataWoogue.CustomViews"
              mc:Ignorable="d"
              x:Class="ChatAppDayataWoogue.Views.LoginPage"
              Shell.NavBarIsVisible="False"
@@ -35,16 +36,18 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Frame BackgroundColor="{StaticResource ImgBgColor}"
+        <Grid RowDefinitions="0.75*, *">
+            <Frame Grid.Row="0"
+                BackgroundColor="{StaticResource ImgBgColor}"
                    Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=0,19'}"  HasShadow="False">
                 <Frame CornerRadius="10" HorizontalOptions="Center"
                        Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=9,9'}">
                     <Image Source="Logo" HorizontalOptions="Center"
-                        HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=185'}"/> 
+                        /> 
                 </Frame>
             </Frame>
-            <StackLayout Spacing="{Binding Converter={StaticResource scale}, ConverterParameter='height=12.5'}" 
+            <StackLayout Grid.Row="1"
+                Spacing="{Binding Converter={StaticResource scale}, ConverterParameter='height=12.5'}" 
                          Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=7.5,2'}" >
                 <local:CustomEntry x:Name="EntryEmail" Placeholder="Email" 
                                    Keyboard="Email"
@@ -52,7 +55,7 @@
                 <AbsoluteLayout>
                     <local:CustomEntry x:Name="EntryPassword" Placeholder="Passsword"
                                    IsPassword="True" 
-                                        AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional"
+                                   AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="SizeProportional"
                                    Style="{StaticResource StyleEntry}"/>
                     <Button x:Name="BtnTogglePasswordVisibility" Text="Show"
                             AbsoluteLayout.LayoutBounds="0.95,0.5"
@@ -83,6 +86,11 @@
                     </Frame>
                 </FlexLayout>
             </StackLayout>
-        </StackLayout>
+            <cv:Loading Grid.Row="1"
+                x:Name="Loading"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                IsVisible="False"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

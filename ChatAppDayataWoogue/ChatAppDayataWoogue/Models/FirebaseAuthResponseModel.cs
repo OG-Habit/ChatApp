@@ -8,17 +8,17 @@ namespace ChatAppDayataWoogue
 {
     public class FirebaseAuthResponseModel : INotifyPropertyChanged
     {
-        bool _Status { get; set; }
+        bool status { get; set; }
         public bool Status
         {
-            get { return _Status; }
-            set { _Status = value; OnPropertyChanged(nameof(Status)); }
+            get { return status; }
+            set { status = value; OnPropertyChanged(nameof(Status)); }
         }
-        string _Response { get; set; }
+        string response { get; set; }
         public string Response
         {
-            get { return _Response; }
-            set { _Response = value; OnPropertyChanged(nameof(Response)); }
+            get { return response; }
+            set { response = value; OnPropertyChanged(nameof(Response)); }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")

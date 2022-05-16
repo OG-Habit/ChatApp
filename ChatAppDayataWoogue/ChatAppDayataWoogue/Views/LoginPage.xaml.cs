@@ -12,9 +12,11 @@ namespace ChatAppDayataWoogue.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        DataClass dataClass = DataClass.GetInstance;
         public LoginPage()
         {
             InitializeComponent();
+
         }
 
         private void TogglePasswordVisibility(object sender, EventArgs e)
@@ -31,18 +33,54 @@ namespace ChatAppDayataWoogue.Views
 
         private async void Login(object sender, EventArgs e)
         {
-            if(App.Current.Properties[KEY_EMAIL].ToString().Equals(EntryEmail.Text) &&
-                App.Current.Properties[KEY_PASSWORD].ToString().Equals(EntryPassword.Text))
+            if(string.IsNullOrEmpty(EntryEmail.Text) && string.IsNullOrEmpty(EntryPassword.Text))
             {
-                await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
-            } 
+                bool retryBool = await DisplayAlert("Error", "Missing field/s. Retry?", "Yes", "No");
+                if(retryBool)
+                    RestartEntries();
+            }
+            else
+            {
+                Loading.IsVisible = true;
+                FirebaseAuthResponseModel res = new FirebaseAuthResponseModel();
+                res = await DependencyService.Get<IFirebaseAuthService>().LoginWithEmailPassword(EntryEmail.Text, EntryPassword.Text);
+
+                if(res.Status == true)
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
+                } 
+                else
+                {
+                    bool retryBool = await DisplayAlert("Error", $"{res.Response} Retry?", "Yes", "No");
+                    if (retryBool)
+                        RestartEntries();
+                }
+                Loading.IsVisible = false;
+            }
+            //if(App.Current.Properties[KEY_EMAIL].ToString().Equals(EntryEmail.Text) &&
+            //    App.Current.Properties[KEY_PASSWORD].ToString().Equals(EntryPassword.Text))
+            //{
+            //    await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
+            //} 
         }
+
+        #region Modular Functions
+        void RestartEntries()
+        {
+            EntryEmail.Text = EntryPassword.Text = string.Empty;
+            EntryEmail.Focus();
+        }
+        #endregion
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            EntryEmail.Text = EntryPassword.Text = "";
-            EntryEmail.Focus();
+            EntryEmail.Text = EntryPassword.Text = string.Empty;
+        }
+        protected override void OnDisappearing()
+        {
+            base.OnAppearing();
+            EntryEmail.Text = EntryPassword.Text = string.Empty;
         }
     }
 }
