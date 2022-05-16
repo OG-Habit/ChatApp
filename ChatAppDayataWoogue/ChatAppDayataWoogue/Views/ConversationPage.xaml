@@ -15,12 +15,12 @@
             <Color x:Key="BgColorPrimaryUser">#90ee90</Color>
             <Color x:Key="BgColorSecondaryUser">#156DC2</Color>
             <x:String x:Key="EmptyConvo">You can now start a conversation with this person.</x:String>
-            <Style TargetType="Label">
+            <Style TargetType="local:CustomLabel">
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="LineBreakMode" Value="WordWrap"/>
-                <Setter Property="VerticalOptions" Value="Start"/>
+                <!--<Setter Property="VerticalOptions" Value="Start"/>-->
                 <Setter Property="Padding" Value="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=10,10'}"/>
-                <!--<Setter Property="MaxWidth" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=1000'}"/>-->
+                <Setter Property="MaxWidth" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=1000'}"/>
                 <Setter Property="Margin" Value="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=0,0,0,10'}"/>
             </Style>
 
@@ -47,14 +47,14 @@
     <ContentPage.Content>
         <Grid ColumnDefinitions="5*, *" RowDefinitions="1*, 9*, 1.3*"
               RowSpacing="0" ColumnSpacing="0">
-            <local:CustomLabel Grid.Row="0" Grid.Column="0"
+            <Label Grid.Row="0" Grid.Column="0"
                    Text="John Doe" FontSize="Title" FontAttributes="Bold"/>
             <Button Grid.Row="0" Grid.Column="1" VerticalOptions="Start"  Margin="0"
                     Text="X"/>
             <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="red"
-                      HasUnevenRows="True"
-                            ItemsSource="{Binding Messages}" Footer="footer"
-                        ItemTemplate="{StaticResource conversationPageTemplateSelector}">
+                      HasUnevenRows="True" SelectionMode="None"
+                      ItemsSource="{Binding Messages}" Footer="footer"
+                      ItemTemplate="{StaticResource conversationPageTemplateSelector}">
                 <!--<CollectionView.EmptyView>
                     <ContentView>
                         <StackLayout VerticalOptions="Center"> 

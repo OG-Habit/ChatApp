@@ -31,7 +31,9 @@ namespace ChatAppDayataWoogue.Droid.CustomRenderers
             if(Context != null)
             {
                 var view = ((CustomLabel)Element);
-                Control.SetMaxWidth(view.MaxWidth);
+
+                if (view.MaxWidth > 0)
+                    Control.SetMaxWidth(view.MaxWidth);
             }
         }
     }
