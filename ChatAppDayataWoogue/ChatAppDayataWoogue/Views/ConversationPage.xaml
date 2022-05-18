@@ -17,17 +17,17 @@
             <x:String x:Key="EmptyConvo">You can now start a conversation with this person.</x:String>
             <Style TargetType="local:CustomLabel">
                 <Setter Property="FontSize" Value="Medium"/>
-                <Setter Property="LineBreakMode" Value="WordWrap"/>
+                <Setter Property="LineBreakMode" Value="CharacterWrap"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
                 <!--<Setter Property="VerticalOptions" Value="Start"/>-->
                 <Setter Property="Padding" Value="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=10,10'}"/>
-                <Setter Property="MaxWidth" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=1000'}"/>
+                <Setter Property="MaxWidth" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=1350'}"/>
                 <Setter Property="Margin" Value="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=0,0,0,10'}"/>
             </Style>
 
             <DataTemplate x:Key="leftSideTemplate" x:DataType="model:Message">
                 <ViewCell>
                     <local:CustomLabel Text="{Binding Text}"
-                            HorizontalTextAlignment="Start"
                             HorizontalOptions="StartAndExpand" 
                             BackgroundColor="{StaticResource BgColorSecondaryUser}"/>
                 </ViewCell>
@@ -35,7 +35,6 @@
             <DataTemplate x:Key="rightSideTemplate" x:DataType="model:Message">
                 <ViewCell>
                     <local:CustomLabel Text="{Binding Text}"
-                            HorizontalTextAlignment="End"
                             HorizontalOptions="EndAndExpand" 
                             BackgroundColor="{StaticResource BgColorPrimaryUser}"/>
                 </ViewCell>
@@ -51,8 +50,9 @@
                    Text="John Doe" FontSize="Title" FontAttributes="Bold"/>
             <Button Grid.Row="0" Grid.Column="1" VerticalOptions="Start"  Margin="0"
                     Text="X"/>
-            <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="red"
+            <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                       HasUnevenRows="True" SelectionMode="None"
+                      SeparatorVisibility="None"
                       ItemsSource="{Binding Messages}" Footer="footer"
                       ItemTemplate="{StaticResource conversationPageTemplateSelector}">
                 <!--<CollectionView.EmptyView>
@@ -72,7 +72,7 @@
                 </Grid.ColumnDefinitions>
                 <local:CustomEditor x:Name="EditorTextInput"
                         Grid.Column="0" Placeholder="Write your message here..." MaxLength="240" AutoSize="Disabled"
-                                    BackgroundColor="Green"  Text="{Binding MessageText, Mode=TwoWay}"
+                        BackgroundColor="Green"  Text="{Binding MessageText, Mode=TwoWay}"
                        HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=60'}"/>
                 <Button Grid.Column="1" Text="Send" Command="{Binding AddMessageCommand}"
                         WidthRequest="{Binding Converter={StaticResource scale}, ConverterParameter='width=100'}"/>

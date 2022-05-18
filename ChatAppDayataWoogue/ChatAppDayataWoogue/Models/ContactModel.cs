@@ -13,22 +13,22 @@ namespace ChatAppDayataWoogue.Models
             set { id = value; OnPropertyChanged(); }
         }
 
-        string contactId { get; set; }
-        public string ContactId
+        string[] contactId { get; set; }
+        public string[] ContactId
         {
             get { return contactId; }
             set { contactId = value; OnPropertyChanged(); }
         }
 
-        string contactName { get; set; }
-        public string ContactName
+        string[] contactName { get; set; }
+        public string[] ContactName
         {
             get { return contactName; }
             set { contactName = value; OnPropertyChanged(); }
         }
 
-        string contactEmail { get; set; }
-        public string ContactEmail
+        string[] contactEmail { get; set; }
+        public string[] ContactEmail
         {
             get { return contactEmail; }
             set { contactEmail = value; OnPropertyChanged(); }

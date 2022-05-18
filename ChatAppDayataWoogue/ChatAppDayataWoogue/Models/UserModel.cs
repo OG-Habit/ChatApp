@@ -36,6 +36,16 @@ namespace ChatAppDayataWoogue
             get { return userType; }
             set { userType = value; OnPropertyChanged(nameof(UserType)); }
         }
+        List<string> contacts;
+        public List<string> Contacts
+        {
+            get => contacts;
+            set
+            {
+                contacts = value;
+                OnPropertyChanged();
+            }
+        }
         DateTime createdAt { get; set; }
         public DateTime CreatedAt
         {
