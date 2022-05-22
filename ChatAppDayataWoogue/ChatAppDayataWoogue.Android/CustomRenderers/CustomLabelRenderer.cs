@@ -8,6 +8,7 @@ using ChatAppDayataWoogue.CustomRenderers;
 using ChatAppDayataWoogue.Droid.CustomRenderers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
@@ -29,8 +30,10 @@ namespace ChatAppDayataWoogue.Droid.CustomRenderers
 
             if(Context != null)
             {
-                var view = (CustomLabel)Element;
-                Control.SetMaxWidth(view.MaxWidth);
+                var view = ((CustomLabel)Element);
+
+                if (view.MaxWidth > 0)
+                    Control.SetMaxWidth(view.MaxWidth);
             }
         }
     }

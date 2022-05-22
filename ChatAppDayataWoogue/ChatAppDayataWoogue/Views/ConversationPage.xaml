@@ -2,16 +2,47 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ChatAppDayataWoogue.CustomRenderers" 
-             xmlns:viewModel="clr-namespace:ChatAppDayataWoogue.ViewModels;assembly=ChatAppDayataWoogue"
-             x:Class="ChatAppDayataWoogue.Views.ConversationPage">
+             xmlns:vm="clr-namespace:ChatAppDayataWoogue.ViewModels;assembly=ChatAppDayataWoogue"
+             xmlns:model="clr-namespace:ChatAppDayataWoogue.Models"
+             xmlns:dt="clr-namespace:ChatAppDayataWoogue.DataTemplates"
+             x:Class="ChatAppDayataWoogue.Views.ConversationPage"
+             x:DataType="vm:ConversationPageViewModel">
+    <ContentPage.BindingContext>
+        <vm:ConversationPageViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Color x:Key="BgColorPrimaryUser">#90ee90</Color>
+            <Color x:Key="BgColorSecondaryUser">#156DC2</Color>
             <x:String x:Key="EmptyConvo">You can now start a conversation with this person.</x:String>
+            <Style TargetType="local:CustomLabel">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="LineBreakMode" Value="CharacterWrap"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <!--<Setter Property="VerticalOptions" Value="Start"/>-->
+                <Setter Property="Padding" Value="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=10,10'}"/>
+                <Setter Property="MaxWidth" Value="{Binding Converter={StaticResource scale}, ConverterParameter='width=1350'}"/>
+                <Setter Property="Margin" Value="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=0,0,0,10'}"/>
+            </Style>
+
+            <DataTemplate x:Key="leftSideTemplate" x:DataType="model:Message">
+                <ViewCell>
+                    <local:CustomLabel Text="{Binding Text}"
+                            HorizontalOptions="StartAndExpand" 
+                            BackgroundColor="{StaticResource BgColorSecondaryUser}"/>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="rightSideTemplate" x:DataType="model:Message">
+                <ViewCell>
+                    <local:CustomLabel Text="{Binding Text}"
+                            HorizontalOptions="EndAndExpand" 
+                            BackgroundColor="{StaticResource BgColorPrimaryUser}"/>
+                </ViewCell>
+            </DataTemplate>
+            <dt:ConversationTemplateSelector x:Key="conversationPageTemplateSelector"
+                LeftSideTemplate="{StaticResource leftSideTemplate}" RightSideTemplate="{StaticResource rightSideTemplate}"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.BindingContext>
-        <viewModel:ConversationPageViewModel/>
-    </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid ColumnDefinitions="5*, *" RowDefinitions="1*, 9*, 1.3*"
               RowSpacing="0" ColumnSpacing="0">
@@ -19,23 +50,12 @@
                    Text="John Doe" FontSize="Title" FontAttributes="Bold"/>
             <Button Grid.Row="0" Grid.Column="1" VerticalOptions="Start"  Margin="0"
                     Text="X"/>
-            <CollectionView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                      x:Name="MessagesView" ItemsSource="{Binding Messages}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout>
-                            <local:CustomLabel Text="{Binding Text}" FontSize="Medium" 
-                                   HorizontalTextAlignment="{Binding Alignment}"
-                                   HorizontalOptions="{Binding HorizontalOptions}" 
-                                   LineBreakMode="WordWrap" 
-                                   Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=10,10'}"
-                                   MaxWidth="{Binding Converter={StaticResource scale}, ConverterParameter='width=1000'}"
-                                   BackgroundColor="{Binding BgColor}"
-                                   Margin="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=0,0,0,10'}"/>
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-                <CollectionView.EmptyView>
+            <ListView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                      HasUnevenRows="True" SelectionMode="None"
+                      SeparatorVisibility="None"
+                      ItemsSource="{Binding Messages}" Footer="footer"
+                      ItemTemplate="{StaticResource conversationPageTemplateSelector}">
+                <!--<CollectionView.EmptyView>
                     <ContentView>
                         <StackLayout VerticalOptions="Center"> 
                             <Label Text="{StaticResource EmptyConvo}" FontSize="Large" FontAttributes="Bold"
@@ -43,8 +63,8 @@
                                    LineHeight="{Binding Converter={StaticResource scale}, ConverterParameter='height=1.5'}"/>
                         </StackLayout>
                     </ContentView>
-                </CollectionView.EmptyView>
-            </CollectionView>
+                </CollectionView.EmptyView>-->
+            </ListView>
             <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Gray}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
@@ -52,9 +72,9 @@
                 </Grid.ColumnDefinitions>
                 <local:CustomEditor x:Name="EditorTextInput"
                         Grid.Column="0" Placeholder="Write your message here..." MaxLength="240" AutoSize="Disabled"
-                                    BackgroundColor="Green"  Text="{Binding MessageText}"
+                        BackgroundColor="Green"  Text="{Binding MessageText, Mode=TwoWay}"
                        HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=60'}"/>
-                <Button Grid.Column="1" Text="Send" Command="{Binding AddMessageCommand}" Clicked="ClearTextInput"
+                <Button Grid.Column="1" Text="Send" Command="{Binding AddMessageCommand}"
                         WidthRequest="{Binding Converter={StaticResource scale}, ConverterParameter='width=100'}"/>
             </Grid>
         </Grid>

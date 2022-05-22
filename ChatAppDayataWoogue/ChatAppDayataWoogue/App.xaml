@@ -9,6 +9,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <local:ScaleXAML x:Key="scale"/>
+            <local:IsOwnerConverter x:Key="isOwnerConverter"/>
+            <local:IsViewerConverter x:Key="isViewerConverter"/>
             <Color x:Key="Signin">#90EE90</Color>
             <Color x:Key="Gray">#D3D3D3</Color>
             <Color x:Key="ImgBgColor">#156DC2</Color>
