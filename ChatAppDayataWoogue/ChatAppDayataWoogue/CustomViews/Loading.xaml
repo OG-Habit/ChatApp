@@ -3,14 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ChatAppDayataWoogue.CustomViews.Loading">
   <ContentView.Content>
-        <StackLayout
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            BackgroundColor="#aa000000">
-            <ActivityIndicator 
-                IsRunning="True"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Frame HorizontalOptions="FillAndExpand"
+               VerticalOptions="Center"
+               BackgroundColor="LightGray" HasShadow="True" Margin="10,10,10,10">
+            <Grid HorizontalOptions="Start" ColumnDefinitions="*,*" >
+                <ActivityIndicator Grid.Column="0"
+                    IsRunning="True"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    Margin="20,0,0,0"/>
+                <Label Grid.Column="1" Text="Loading..." 
+                       HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black"/>
+            </Grid>
+        </Frame>
     </ContentView.Content>
 </ContentView>

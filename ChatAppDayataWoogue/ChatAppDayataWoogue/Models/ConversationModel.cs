@@ -27,8 +27,8 @@ namespace ChatAppDayataWoogue.Models
             set { converseeId = value; OnPropertyChanged(); }   
         }
 
-        DateTime createdAt { get; set; }
-        public DateTime CreatedAt
+        string createdAt { get; set; }
+        public string CreatedAt
         {
             get { return createdAt; }
             set { createdAt = value; OnPropertyChanged(); } 

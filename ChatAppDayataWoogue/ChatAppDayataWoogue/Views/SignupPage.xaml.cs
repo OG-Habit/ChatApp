@@ -32,8 +32,8 @@ namespace ChatAppDayataWoogue.Views
 
         async void GoToLoginPage(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($".."); 
-
+            //await Shell.Current.GoToAsync($".."); 
+            await Navigation.PopModalAsync(true);
         }
         
         private async void SignUp(object sender, EventArgs e)
@@ -54,8 +54,9 @@ namespace ChatAppDayataWoogue.Views
                     App.Current.Properties[KEY_PASSWORD] = EntryPassword.Text;
                     App.Current.Properties[KEY_USERNAME] = EntryUsername.Text;
                     await Application.Current.SavePropertiesAsync();
-                    await DisplayAlert("Success", "You have successfully create an account", "Continue");
-                    await Shell.Current.GoToAsync("..");
+                    //await DisplayAlert("Success", "You have successfully create an account", "Continue");
+                    //await Shell.Current.GoToAsync("..");
+                    //await Navigation.PopAsync();
                 } else
                 {
                     Loading.IsVisible = true;
@@ -68,11 +69,12 @@ namespace ChatAppDayataWoogue.Views
                         {
                             await CrossCloudFirestore.Current
                                 .Instance
-                                .Collection("users")
-                                .Document(dataClass.LoggedInUser.Uid)
-                                .SetAsync(dataClass.LoggedInUser);
+                                .GetCollection("users")
+                                .GetDocument(dataClass.LoggedInUser.Uid)
+                                .SetDataAsync(dataClass.LoggedInUser);
                             await DisplayAlert("Success", res.Response, "Okay");
-                            await Shell.Current.GoToAsync("..");
+                            //await Shell.Current.GoToAsync("..");
+                            await Navigation.PopModalAsync(true);
                         }
                         catch (Exception ex)
                         {

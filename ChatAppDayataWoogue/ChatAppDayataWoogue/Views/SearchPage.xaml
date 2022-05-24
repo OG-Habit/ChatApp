@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:ChatAppDayataWoogue.CustomRenderers"
+             xmlns:cv="clr-namespace:ChatAppDayataWoogue.CustomViews"
+             mc:Ignorable="d"
+             x:Class="ChatAppDayataWoogue.Views.SearchPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             Title="SearchPage"
+             x:Name="searchPage">
+    <ContentPage.Content>
+        <Grid RowDefinitions="10, *">
+            <Button x:Name="CloseButton" Text="X" Grid.Row="0"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        FontSize="{Binding Converter={StaticResource scale}, ConverterParameter='fontSize=10'}"
+                        WidthRequest="{Binding Converter={StaticResource scale}, ConverterParameter='width=50'}" 
+                        HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=25'}"
+                        Clicked="ExitPage" />
+            <ListView Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="StartAndExpand" HasUnevenRows="True" 
+                      x:Name="ResultsList" 
+                      ItemTapped="AddContact"
+                      SeparatorVisibility="None"
+                      Margin="{Binding Converter={StaticResource scale},ConverterParameter='thickness=5,5,5,0'}"
+                      IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Frame Padding="0" CornerRadius="5" IsClippedToBounds="True" HasShadow="True" BorderColor="LightBlue"
+                                       HorizontalOptions="Fill" VerticalOptions="FillAndExpand"
+                                       Margin="{Binding Converter={StaticResource scale},ConverterParameter='thickness=10,5,10,5'}">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="5*"/>
+                                            <RowDefinition Height="5*"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Text="{Binding Name}" Margin="{Binding Converter={StaticResource scale},ConverterParameter='thickness=10,5,10,5'}"
+                                               Grid.Row="0" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill"
+                                               HorizontalTextAlignment="Start" VerticalTextAlignment="End" FontSize="Large">
+                                        </Label>
+                                        <Label Text="{Binding Email}" Margin="{Binding Converter={StaticResource scale},ConverterParameter='thickness=10,5,10,5'}"
+                                               Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill"
+                                               HorizontalTextAlignment="Start" VerticalTextAlignment="End" FontSize="Medium">
+                                        </Label>
+                                    </Grid>
+                                </Frame>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                   x:Name="emptyListLabel" IsVisible="False">
+                
+            </Label>
+            <!--<StackLayout Grid.Row="1" 
+                         VerticalOptions="CenterAndExpand" 
+                         HorizontalOptions="CenterAndExpand" />
+            <CollectionView SelectionMode="None"
+                      ItemsSource="{Binding Contacts}">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout VerticalOptions="Center"
+                                     Margin="{Binding Converter={StaticResource scale},ConverterParameter='thickness=5,0,5,0'}">
+                            <Label Text="You have no contacts as of the moment." FontSize="Large" FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center" 
+                                   LineHeight="{Binding Converter={StaticResource scale}, ConverterParameter='height=1.5'}"/>
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+            </CollectionView>-->
+            <cv:Loading Grid.Row="0" Grid.RowSpan="2"
+                x:Name="Loading"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                IsVisible="False"/>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

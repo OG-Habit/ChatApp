@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static ChatAppDayataWoogue.Constants;
+using ChatAppDayataWoogue.CustomViews;
+using Plugin.CloudFirestore;
 
 namespace ChatAppDayataWoogue.Views
 {
@@ -28,7 +30,14 @@ namespace ChatAppDayataWoogue.Views
 
         async void GoToSignup(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"{nameof(SignupPage)}");
+            //await Shell.Current.GoToAsync($"{nameof(SignupPage)}");
+            await Navigation.PushModalAsync(new SignupPage());
+        }
+
+        async void GoToForgotPassword(object sender, EventArgs e)
+        {
+            //await Shell.Current.GoToAsync($"{nameof(SignupPage)}");
+            await Navigation.PushAsync(new ForgotPasswordPage());
         }
 
         private async void Login(object sender, EventArgs e)
@@ -47,7 +56,8 @@ namespace ChatAppDayataWoogue.Views
 
                 if(res.Status == true)
                 {
-                    await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
+                    //await Shell.Current.GoToAsync($"//{nameof(ChatPage)}");
+                    App.Current.MainPage = new NavigationPage(new TabPage());
                 } 
                 else
                 {
