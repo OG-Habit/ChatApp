@@ -8,6 +8,7 @@ using ChatAppDayataWoogue;
 
 using Xamarin.Forms;
 using Firebase;
+using AndroidX.AppCompat.App;
 
 namespace ChatAppDayataWoogue.Droid
 {
@@ -16,6 +17,8 @@ namespace ChatAppDayataWoogue.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
+
             var density = Resources.DisplayMetrics.Density;
             TabLayoutResource  = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
