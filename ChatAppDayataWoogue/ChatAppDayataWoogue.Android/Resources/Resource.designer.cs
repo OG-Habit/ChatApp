@@ -17026,7 +17026,7 @@ namespace ChatAppDayataWoogue.Droid
 			public const int ProfileIcon = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int splashimage = 2131165353;
+			public const int SplashImage = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
 			public const int test_custom_background = 2131165354;
