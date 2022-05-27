@@ -27,7 +27,8 @@ namespace ChatAppDayataWoogue.Views
 
             if(res.Status == true)
             {
-                await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                //await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
+                App.Current.MainPage = new NavigationPage(new LoginPage());
             }
             else
             {

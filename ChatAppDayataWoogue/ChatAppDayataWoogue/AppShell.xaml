@@ -29,9 +29,9 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar>
+    <!--<TabBar>
         <ShellContent Route="ConversationPage" ContentTemplate="{DataTemplate local:ConversationPage}" />
-    </TabBar>
+    </TabBar>-->
 
     <TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />

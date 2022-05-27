@@ -46,8 +46,9 @@ namespace ChatAppDayataWoogue
                 OnPropertyChanged();
             }
         }
-        DateTime createdAt { get; set; }
-        public DateTime CreatedAt
+        //DateTime changed to string format
+        string createdAt { get; set; }
+        public string CreatedAt
         {
             get { return createdAt; }
             set { createdAt = value; OnPropertyChanged(nameof(CreatedAt)); }

@@ -190,7 +190,7 @@ namespace ChatAppDayataWoogue.Droid
                     Email = email,
                     Name = defaultName,
                     UserType = 0,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow.ToString("u")
                 };
                 return response;
             } 

@@ -65,8 +65,11 @@
                         HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=29'}"
                         Clicked="TogglePasswordVisibility" />
                 </AbsoluteLayout>
-                <Label Text="Forgot Password" 
-                       HorizontalOptions="End"/>
+                <Label Text="Forgot Password" HorizontalOptions="End">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GoToForgotPassword"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 <Button Text="Sign in" Clicked="Login" 
                     BackgroundColor="{StaticResource Signin}"/>
                 <Button Text="Create an account" Clicked="GoToSignup" 
@@ -86,10 +89,10 @@
                     </Frame>
                 </FlexLayout>
             </StackLayout>
-            <cv:Loading Grid.Row="1"
+            <cv:Loading Grid.Row="0" Grid.RowSpan="2"
                 x:Name="Loading"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="Start"
+                VerticalOptions="Center"
                 IsVisible="False"/>
         </Grid>
     </ContentPage.Content>

@@ -27,8 +27,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Frame BackgroundColor="{StaticResource ImgBgColor}"
+        <Grid RowDefinitions="0.5*, *">
+            <Frame Grid.Row="0" BackgroundColor="{StaticResource ImgBgColor}"
                    Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=0,19'}"  HasShadow="False">
                 <Frame CornerRadius="10" HorizontalOptions="Center"
                        Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=9,9'}">
@@ -36,7 +36,8 @@
                         HeightRequest="{Binding Converter={StaticResource scale}, ConverterParameter='height=130'}"/>
                 </Frame>
             </Frame>
-            <StackLayout Spacing="{Binding Converter={StaticResource scale}, ConverterParameter='height=12.5'}" 
+            <StackLayout Grid.Row="1"
+                         Spacing="{Binding Converter={StaticResource scale}, ConverterParameter='height=12.5'}" 
                          Padding="{Binding Converter={StaticResource scale}, ConverterParameter='thickness=7.5,2'}" >
                 <local:CustomEntry x:Name="EntryUsername" Placeholder="Username" 
                                    Style="{StaticResource StyleEntry}"/>
@@ -81,11 +82,11 @@
                     </Frame>
                 </FlexLayout>
             </StackLayout>
-            <cv:Loading
+            <cv:Loading Grid.Row="0" Grid.RowSpan="2"
                 x:Name="Loading"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="Start"
+                VerticalOptions="Center"
                 IsVisible="False"/>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
