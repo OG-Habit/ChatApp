@@ -20,7 +20,7 @@ namespace ChatAppDayataWoogue.Droid
             AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
 
             var density = Resources.DisplayMetrics.Density;
-            TabLayoutResource  = Resource.Layout.Tabbar;
+            TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             FirebaseApp.InitializeApp(this);

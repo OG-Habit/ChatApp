@@ -82,9 +82,12 @@ namespace ChatAppDayataWoogue.Droid
                 {
                     var document = await CrossCloudFirestore.Current
                                         .Instance
-                                        .Collection("users")
-                                        .Document(result.User.Uid)
-                                        .GetAsync();
+                                        .GetCollection("users")
+                                        .GetDocument(result.User.Uid)
+                                        .GetDocumentAsync();
+                                        //.Collection("users")
+                                        //.Document(result.User.Uid)
+                                        //.GetAsync();
                     var yourModel = document.ToObject<UserModel>();
 
                     dataClass.LoggedInUser = new UserModel()
