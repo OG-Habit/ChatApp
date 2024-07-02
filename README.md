@@ -1,4 +1,4 @@
-Chat Application (Xamarin, Firebase)
+# Chat Application (Xamarin, Firebase)
 
 ![image](https://github.com/OG-Habit/ChatApp/assets/84717650/e3c59b2c-3f23-4ef9-8c2b-c1683840c745)
 
